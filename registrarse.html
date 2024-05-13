@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+ <html lang="es"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>Document</title> 
+     <link rel="icon" href="./Imagenes/d5564ad6e6d0cc064decbec4d696d204-2.jpg">
+     <link rel="stylesheet" href="Css/styles.css">
+ </head> 
+ 
+ <body>
+  <div>
+    <table>
+        <tr>
+            <th>
+               <div> 
+                    <h2 style= "text-align: center"> DATOS DEL PACIENTE </h2>
+
+                    <div style="margin-bottom: 1rem;">
+                        <hr>
+                    </div>
+
+                    <form action="./login.html" method="get"> 
+                        <div style="margin-bottom: .5rem;"> Apellido 
+                            <input type="text" name="apellido" id="apellido" placeholder="apellido" required> 
+                        </div>
+                        
+                        <div style="margin-bottom: .5rem;"> Nombre    
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre" required> 
+                        </div> 
+                        
+                        <div style="margin-bottom: .5rem;"> DNI    
+                            <input type="number" name="dni" id="dni" placeholder="D.N.I." required> 
+                        </div>  
+ 
+                        <div style="margin-bottom: 1.5rem;"> Email   
+                            <input style= "width: 14rem" type="email" name="user" id="user" placeholder="email" required> 
+                        </div> 
+
+                        <div style="margin-bottom: .5rem;"> Sexo
+                            <select name="select"> 
+                                <option value="value1">Hombre</option> 
+                                <option value="value2">Mujer</option> 
+                                <option value="value3" selected>Omitir</option> 
+                            </select>                 
+                        </div> 
+                                                
+                        <div style="margin-bottom: .5rem;"> Fecha de Nac.
+                            <input style= "width: 6.15rem" type="date" name="fechaNac" id="" required> 
+                        </div> 
+
+                        <div style="margin-bottom: .5rem;"> 
+                            <a href="">Se atendió anteriormente aqui?: </a>
+                            <input type="radio" id="si" name="SeAtendio" value="SI"> 
+                            <label for="si">SI</label>
+                            <input type="radio" id="no" name="SeAtendio" value="NO"> 
+                            <label for="no">NO</label><br>                            
+                        </div> 
+
+                        <div style="margin-bottom: .5rem;"> Obra Social
+                            <select name="select"> 
+                                <option value="value1" selected>Sin Obra Social</option> 
+                                <option value="value2">Osde</option> 
+                                <option value="value3">Ospil</option> 
+                                <option value="value4">Ospil-Ampil</option> 
+                                <option value="value5">Pami</option> 
+                                <option value="value6">IAPOS</option> 
+                                <option value="value7">Jerárquico</option> 
+                                <option value="value8">Medife</option> 
+                                <option value="value9">Ospat</option> 
+                                <option value="value10">Osecac</option> 
+                                <option value="value11">Sancor</option> 
+                                <option value="value12">Ioma</option> 
+                                <option value="value13">UOM</option> 
+                                <option value="value14">ANSAFE</option> 
+                                <option value="value15">UTA</option> 
+                                <option value="value16">Vacio</option> 
+                                <option value="value17">Vacio</option> 
+                                <option value="value18">Vacio</option> 
+                                <option value="value19">Vacio</option> 
+                                <option value="value20">Vacio</option> 
+                                <option value="value21">Vacio</option> 
+                                <option value="value22">Vacio</option> 
+                                <option value="value23">Vacio</option> 
+                                <option value="value24">Vacio</option> 
+                                <option value="value25">No Se encuentra en el listado</option> 
+                            </select>                 
+                        </div> 
+ 
+                        <div style="margin-bottom: 2.5rem;"> Ingrese su foto
+                            <input type="file" name="cv" id=""> 
+                        </div> 
+
+                        <div style="margin-bottom: .5rem; margin: 1.5rem;"> Contraseña 
+                            <input style = "background-color: rgb(211, 210, 179)" type="password" name="pass" id="pass" required> 
+                        </div> 
+
+                        <div style="margin-bottom: .5rem;"> 
+                            <input type="reset" value="LImpiar"> 
+                            <input type="submit" value="REgistrar" style= " background-color: rgb(172,172,172) imp"> 
+                        </div> 
+
+                    </form>   
+                </div>
+            </th>
+        </tr>
+    </table>
+    <div class="center-button">
+        <a href="index.html" class="boton">Volver a Pagina Inicial </a>
+    </div>
+  </div> 
+  
+ </body> 
+ </html>
