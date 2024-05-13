@@ -1,5 +1,9 @@
+
 body {
     background-image:url(../Imagenes/d5564ad6e6d0cc064decbec4d696d204-2.jpg); 
+    background-size: cover; /* La imagen de fondo se ajusta para cubrir todo el contenedor */
+    background-position: center; /* La imagen de fondo se centra horizontal y verticalmente */
+
     font-style: normal; 
     font-family: calibri; 
     margin-top: 2rem;
