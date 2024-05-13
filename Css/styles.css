@@ -123,3 +123,18 @@ nav {
 .boton:hover {
     background-color: #2980b9; /* Color de fondo del botón al pasar el ratón */
 }
+
+
+.container {
+    margin-top: 8rem;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.turnos {
+    margin-top: 80px; /* Espacio entre el encabezado y el contenido */
+}
+
+.input-submit {
+    background-color: rgb(172,172,172);  /* Color de fondo de los botones input-submit*/
+}
