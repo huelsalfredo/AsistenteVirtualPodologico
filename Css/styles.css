@@ -30,6 +30,13 @@ table {
     font-family: 'Calibri'; font-style: bold;
 }
 
+.texto2 {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    padding: 10px; /* Espacio entre elementos */
+    border: 1px solid black; /* Borde */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
 input:hover {
     background-color: aqua!important;
 }
@@ -47,8 +54,6 @@ select:focus {
     background-color: rgb(29, 32, 211)!important;
       color: white;
 }
-
-/*----------------------------------------------------------------------------------------------------------------*/ 
 
 nav {
     background-color: #1e3799; /* Azul oscuro */
@@ -90,22 +95,42 @@ nav {
         margin: 5px 0;
         padding-right: 16px;
     }
-    
+
+    .row {
+        flex-direction: column; /* Cambia a columnas en dispositivos pequeños */
+    }
+
+    .d-flex {
+        flex-direction: column; /* Cambia a columnas en dispositivos pequeños */
+    }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 760px) {
     .nav-container {
         padding-right: 16px;
     }
+
+    .row {
+        flex-wrap: wrap; /* Envuelve los elementos en dispositivos medianos */
+    }
+
+    .texto {
+        flex-basis: 50%; /* Establece el ancho de los elementos en dispositivos medianos */
+    }
+
+
 }
 
 @media only screen and (min-width: 761px) and (max-width: 1024px) {
     .nav-item {
         margin-left: 10px;
     }
-}
 
-/*-----------------------------------------------------------------------------------------------------------------*/
+    .texto {
+        flex-basis: 33.33%; /* Establece el ancho de los elementos en dispositivos grandes */
+    }
+
+}
 
 .center-button {
     text-align: center; /* Centra el texto del botón */
@@ -128,6 +153,9 @@ nav {
     background-color: #2980b9; /* Color de fondo del botón al pasar el ratón */
 }
 
+.row {
+    display: flex;
+}
 
 .container {
     margin-top: 8rem;
@@ -141,4 +169,48 @@ nav {
 
 .input-submit {
     background-color: rgb(172,172,172);  /* Color de fondo de los botones input-submit*/
+}
+
+.m-b-05 {
+    margin-bottom: .5rem;
+}
+
+.m-b-10 {
+    margin-bottom: 1rem;
+}
+
+.m-b-15 {
+    margin-bottom: 1.5rem;
+}
+
+.m-b-20 {
+    margin-bottom: 2rem;
+}
+
+.m-b-25 {
+    margin-bottom: 2.5rem;
+}
+.m-t-15 {
+    margin: 1.5rem;
+}
+
+.color-01 {
+    background-color: rgb(211, 210, 179);
+}
+
+.botones {   
+    margin: -.50rem 0rem .5rem 0rem;
+}
+
+.botones a {
+    padding: .2rem .35rem .2rem .35rem;
+    border-radius: 5px;
+    margin: 0 -.05rem;
+    text-decoration: none;
+    font-size: .6rem;
+    font-weight: bold;
+}
+
+.fondoClaro {
+    background-color: rgb(241, 239, 235);
 }
