@@ -1,8 +1,12 @@
 
 // Función para formatear la fecha en YYYY-MM-DD
 function formatDate(date) {
-    let day = ("0" + date.getDate()).slice(-2); // garantiza que el día del mes esté representado con dos dígitos, añadiendo un cero al principio si es necesario
-    let month = ("0" + (date.getMonth() + 1)).slice(-2); //garantiza que el mes esté representado con dos dígitos, añadiendo un cero al principio si es necesario
+    // garantiza que el día del mes esté representado con dos dígitos, añadiendo un cero al principio si es necesario
+    let day = ("0" + date.getDate()).slice(-2); 
+    
+    //garantiza que el mes esté representado con dos dígitos, añadiendo un cero al principio si es necesario
+    let month = ("0" + (date.getMonth() + 1)).slice(-2); 
+    
     let year = date.getFullYear();  // devuelve el año
     return `${year}-${month}-${day}`; // retorna  yyyy-mm-dd
 }
