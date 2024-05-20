@@ -1,67 +1,59 @@
-// Obtener elementos del DOM
-const fechaInput = document.getElementById('fecha');
-const horaSelect = document.getElementById('hora');
 
-// Obtener la fecha actual
-const hoy = new Date();
-const dd = String(hoy.getDate()).padStart(2, '0');
-const mm = String(hoy.getMonth() + 1).padStart(2, '0');
-const yyyy = hoy.getFullYear();
-const fechaHoy = yyyy + '-' + mm + '-' + dd;
-
-// Establecer la fecha mínima como hoy
-fechaInput.min = fechaHoy;
-
-// Calcular la fecha máxima como hoy más 3 meses
-const fechaMax = new Date(hoy.getTime() + (90 * 24 * 60 * 60 * 1000));
-const maxdd = String(fechaMax.getDate()).padStart(2, '0');
-const maxmm = String(fechaMax.getMonth() + 1).padStart(2, '0');
-const maxyyyy = fechaMax.getFullYear();
-const fechaMaxima = maxyyyy + '-' + maxmm + '-' + maxdd;
-fechaInput.max = fechaMaxima;
-
-// Generar las opciones de hora de 8 a 15 con intervalo de 1 hora
-for (let hora = 8; hora <= 15; hora++) {
-    const option = document.createElement('option');
-    option.value = hora;
-    option.textContent = `${hora}:00`;
-    horaSelect.appendChild(option);
+// Función para formatear la fecha en YYYY-MM-DD
+function formatDate(date) {
+    let day = ("0" + date.getDate()).slice(-2);
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
+    return `${year}-${month}-${day}`;
 }
 
-// Manejar evento de cambio de fecha
-fechaInput.addEventListener('change', actualizarHoras);
+// Lista de días festivos (formato YYYY-MM-DD)
+const holidays = [
+    "2024-01-01", "2024-04-02", "2024-05-01", "2024-05-25", // Añade aquí todos los días festivos
+    "2024-07-09", "2024-12-25" // Ejemplo de días festivos
+];
 
-// Actualizar las horas disponibles según la fecha seleccionada
-function actualizarHoras() {
-    const fechaSeleccionada = new Date(fechaInput.value);
-    const diaSemana = fechaSeleccionada.getDay(); // 0 (domingo) a 6 (sábado)
+// Establecer límites para el campo de fecha
+document.addEventListener('DOMContentLoaded', (event) => {
+    let fechaInput = document.getElementById('fecha');
+    let fechaError = document.getElementById('fecha-error');
+    let today = new Date();
+    let minDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 1);
+    let maxDate = new Date(today);
+    maxDate.setMonth(maxDate.getMonth() + 3);
 
-    // Si es lunes a viernes
-    if (diaSemana >= 1 && diaSemana <= 5) {
-        // Limpiar opciones anteriores
-        horaSelect.innerHTML = '<option value="">Selecciona una hora</option>';
+    fechaInput.min = formatDate(minDate);
+    fechaInput.max = formatDate(maxDate);
 
-        // Agregar opciones de hora de 8 a 15 con intervalo de 1 hora
-        for (let hora = 8; hora <= 15; hora++) {
-            const option = document.createElement('option');
-            option.value = hora;
-            option.textContent = `${hora}:00`;
-            horaSelect.appendChild(option);
+    // Deshabilitar días no permitidos (domingos y festivos)
+    fechaInput.addEventListener('input', function() {
+        let selectedDate = new Date(this.value + 'T00:00:00'); // Asegurar que la hora sea a medianoche UTC
+        let dayOfWeek = selectedDate.getUTCDay(); // 0 (domingo) - 6 (sábado)
+        let formattedDate = formatDate(selectedDate);
+
+        if (dayOfWeek === 0) {
+            fechaError.textContent = "La fecha seleccionada es un domingo. Por favor, elige otro día.";
+            fechaError.style.display = "block";
+            this.setCustomValidity("La fecha seleccionada es un domingo.");
+        } else if (holidays.includes(formattedDate)) {
+            fechaError.textContent = "La fecha seleccionada es un día feriado. Por favor, elige otro día.";
+            fechaError.style.display = "block";
+            this.setCustomValidity("La fecha seleccionada es un día feriado.");
+        } else {
+            fechaError.style.display = "none";
+            this.setCustomValidity("");
         }
-    } else {
-        // Si es sábado o domingo, no hay turnos disponibles
-        horaSelect.innerHTML = '<option value="">No hay turnos disponibles</option>';
-    }
-}
+    });
+});
 
-// Manejar evento de confirmar turno
-const confirmarButton = document.getElementById('confirmar');
-confirmarButton.addEventListener('click', confirmarTurno);
+// Manejar el envío del formulario
+document.getElementById('turnoForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío normal del formulario
 
-// Función para confirmar el turno
-function confirmarTurno() {
-    const fechaSeleccionada = fechaInput.value;
-    const horaSeleccionada = horaSelect.value;
+    let fecha = document.getElementById('fecha').value;
+    let hora = document.getElementById('hora').value;
 
-    if (fechaSeleccionada && horaSeleccionada) {
-        alert(`Has seleccionado un turno para el ${fechaS
+    // Redirigir a login.html con los parámetros de fecha y hora
+    window.location.href = `login.html?fecha=${fecha}&hora=${hora}`;
+});
