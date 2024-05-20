@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title> 
     <link rel="icon" href="./Imagenes/d5564ad6e6d0cc064decbec4d696d204-2.jpg">
     <link rel="stylesheet" href="./Css/styles.css">
@@ -12,10 +12,37 @@
     <div style="text-align: center;">
         <h3>Se enviaron correctamente los datos...</h3>
         <h3>para ser anexados a la Base de Datos...</h3>
+        <div id="datosEnviados"></div>
     </div>
     <div class="center-button">
         <a href="index.html" class="boton">Volver a Pagina Inicial </a>
     </div>
 
+    <script>
+        // Función para obtener los parámetros de la URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const fecha = params.get('fecha');
+            const hora = params.get('hora');
+            return { fecha, hora };
+        }
+
+        // Función para mostrar los datos en la página
+        function mostrarDatos() {
+            const { fecha, hora } = getQueryParams();
+            const datosEnviadosDiv = document.getElementById('datosEnviados');
+            if (fecha && hora) {
+                datosEnviadosDiv.innerHTML = `
+                    <p><strong>Fecha seleccionada:</strong> ${fecha}</p>
+                    <p><strong>Hora seleccionada:</strong> ${hora}</p>
+                `;
+            } else {
+                datosEnviadosDiv.innerHTML = '<p>No se enviaron datos.</p>';
+            }
+        }
+
+        // Ejecutar la función al cargar la página
+        document.addEventListener('DOMContentLoaded', mostrarDatos);
+    </script>
 </body>
 </html>
